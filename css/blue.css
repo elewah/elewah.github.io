@@ -22,6 +22,10 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 :focus {
 	outline: 0;
 }
+
+html {
+	zoom: 110%;
+}
 body {
 	line-height: 1;
 }
