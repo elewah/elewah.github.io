@@ -19,7 +19,7 @@ If you should have any questions please contact us here: http://elemisfreebies.c
 -elemis
 Visit our portfolio: http://elemisfreebies.com/portfolio
 
-```html
+
     <div>
         
                 <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
@@ -100,4 +100,4 @@ var n,a=t("./lib/build-log"),i=t("./lib/epsilon"),o=t("./lib/intersecter"),s=t("
                 
             </script>
         </div>
-```
+
