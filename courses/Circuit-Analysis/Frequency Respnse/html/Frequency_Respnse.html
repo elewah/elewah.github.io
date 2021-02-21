@@ -1,0 +1,182 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Analyzing the Response of an RLC Circuit</title><meta name="generator" content="MATLAB 9.8"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-02-21"><meta name="DC.source" content="Frequency_Respnse.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Analyzing the Response of an RLC Circuit</h1><!--introduction--><p>This example shows how to analyze the time and frequency responses of common RLC circuits as a function of their physical parameters using Control System Toolbox&#8482; functions.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Bandpass RLC Network</a></li><li><a href="#4">Analyzing the Frequency Response of the Circuit</a></li><li><a href="#8">Analyzing the Time Response of the Circuit</a></li><li><a href="#10">Interactive GUI</a></li></ul></div><h2 id="1">Bandpass RLC Network</h2><p>The following figure shows the parallel form of a bandpass RLC circuit:</p><p><img vspace="5" hspace="5" src="../rlc_01.png" alt=""> </p><p><b>Figure 1</b>: Bandpass RLC Network.</p><p>The transfer function from input to output voltage is:</p><p><img src="Frequency_Respnse_eq02059057143927835882.png" alt="$$ G(s) =  { s / (RC) \over s^2 + s/(RC) + 1/(LC) } $$" style="width:196px;height:35px;"></p><p>The product <tt>LC</tt> controls the bandpass frequency while <tt>RC</tt> controls how narrow the passing band is. To build a bandpass filter tuned to the frequency 1 rad/s, set <tt>L=C=1</tt> and use <tt>R</tt> to tune the filter band.</p><h2 id="4">Analyzing the Frequency Response of the Circuit</h2><p>The Bode plot is a convenient tool for investigating the bandpass characteristics of the RLC network. Use <tt>tf</tt> to specify the circuit's transfer function for the values</p><pre class="codeinput"><span class="comment">%|R=L=C=1|:</span>
+R = 1; L = 1; C = 1;
+G = tf([1/(R*C) 0],[1 1/(R*C) 1/(L*C)])
+</pre><pre class="codeoutput">
+G =
+ 
+       s
+  -----------
+  s^2 + s + 1
+ 
+Continuous-time transfer function.
+
+</pre><p>Next, use <tt>bode</tt> to plot the frequency response of the circuit:</p><pre class="codeinput">bode(G), grid
+</pre><img vspace="5" hspace="5" src="Frequency_Respnse_01.png" alt=""> <p>As expected, the RLC filter has maximum gain at the frequency 1 rad/s. However, the attenuation is only -10dB half a decade away from this frequency. To get a narrower passing band, try increasing values of R as follows:</p><pre class="codeinput">R1 = 5;   G1 = tf([1/(R1*C) 0],[1 1/(R1*C) 1/(L*C)]);
+R2 = 20;  G2 = tf([1/(R2*C) 0],[1 1/(R2*C) 1/(L*C)]);
+bode(G,<span class="string">'b'</span>,G1,<span class="string">'r'</span>,G2,<span class="string">'g'</span>), grid
+legend(<span class="string">'R = 1'</span>,<span class="string">'R = 5'</span>,<span class="string">'R = 20'</span>)
+</pre><img vspace="5" hspace="5" src="Frequency_Respnse_02.png" alt=""> <p>The resistor value <tt>R=20</tt> gives a filter narrowly tuned around the target frequency of 1 rad/s.</p><h2 id="8">Analyzing the Time Response of the Circuit</h2><p>We can confirm the attenuation properties of the circuit <tt>G2</tt> (<tt>R=20</tt>) by simulating how this filter transforms sine waves with frequency 0.9, 1, and 1.1 rad/s:</p><pre class="codeinput">t = 0:0.05:250;
+opt = timeoptions;
+opt.Title.FontWeight = <span class="string">'Bold'</span>;
+subplot(311), lsim(G2,sin(t),t,opt), title(<span class="string">'w = 1'</span>)
+subplot(312), lsim(G2,sin(0.9*t),t,opt), title(<span class="string">'w = 0.9'</span>)
+subplot(313), lsim(G2,sin(1.1*t),t,opt), title(<span class="string">'w = 1.1'</span>)
+</pre><img vspace="5" hspace="5" src="Frequency_Respnse_03.png" alt=""> <p>The waves at 0.9 and 1.1 rad/s are considerably attenuated. The wave at 1 rad/s comes out unchanged once the transients have died off. The long transient results from the poorly damped poles of the filters, which unfortunately are required for a narrow passing band:</p><pre class="codeinput">damp(pole(G2))
+</pre><pre class="codeoutput">                                                                        
+         Pole              Damping       Frequency       Time Constant  
+                                       (rad/TimeUnit)     (TimeUnit)    
+                                                                        
+ -2.50e-02 + 1.00e+00i     2.50e-02       1.00e+00          4.00e+01    
+ -2.50e-02 - 1.00e+00i     2.50e-02       1.00e+00          4.00e+01    
+</pre><h2 id="10">Interactive GUI</h2><p>To analyze other standard circuit configurations such as low-pass and high-pass RLC networks, click on the link below to launch an interactive GUI. In this GUI, you can change the R,L,C parameters and see the effect on the time and frequency responses in real time.</p><p><a href="matlab:rlc_gui">Open the RLC Circuit GUI</a></p><pre class="codeinput">rlc_gui
+</pre><img vspace="5" hspace="5" src="Frequency_Respnse_04.png" alt=""> <p class="footer">Copyright 1986-2014 The MathWorks, Inc.<br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2020a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Analyzing the Response of an RLC Circuit
+% This example shows how to analyze the time and frequency responses of
+% common RLC circuits as a function of their physical parameters using
+% Control System Toolbox(TM) functions.
+
+%   Copyright 1986-2014 The MathWorks, Inc.
+
+%% Bandpass RLC Network
+% The following figure shows the parallel form of a bandpass RLC circuit:
+%
+% <<../rlc_01.png>>
+
+%%
+% *Figure 1*: Bandpass RLC Network.
+
+%%
+% The transfer function from input to output voltage is:
+%
+% $$ G(s) =  { s / (RC) \over s^2 + s/(RC) + 1/(LC) } $$
+%
+% The product |LC| controls the bandpass frequency while |RC|
+% controls how narrow the passing band is. To build a bandpass filter 
+% tuned to the frequency 1 rad/s, set |L=C=1| and use |R| 
+% to tune the filter band. 
+
+%% Analyzing the Frequency Response of the Circuit
+% The Bode plot is a convenient tool for investigating the 
+% bandpass characteristics of the RLC network. Use |tf| to 
+% specify the circuit's transfer function for the values
+%|R=L=C=1|:
+R = 1; L = 1; C = 1;
+G = tf([1/(R*C) 0],[1 1/(R*C) 1/(L*C)])
+
+%%
+% Next, use |bode| to plot the frequency response of the circuit:
+bode(G), grid
+
+%%
+% As expected, the RLC filter has maximum gain at the frequency 1 rad/s.
+% However, the attenuation is only -10dB half a decade away from this
+% frequency. To get a narrower passing band, try increasing values of R as follows:
+R1 = 5;   G1 = tf([1/(R1*C) 0],[1 1/(R1*C) 1/(L*C)]);
+R2 = 20;  G2 = tf([1/(R2*C) 0],[1 1/(R2*C) 1/(L*C)]);
+bode(G,'b',G1,'r',G2,'g'), grid
+legend('R = 1','R = 5','R = 20')
+
+%% 
+% The resistor value |R=20| gives a filter narrowly tuned around the target
+% frequency of 1 rad/s. 
+
+%% Analyzing the Time Response of the Circuit
+% We can confirm the attenuation properties of the circuit |G2| (|R=20|)
+% by simulating how this filter transforms sine waves with frequency 0.9, 1, and 1.1 rad/s:
+t = 0:0.05:250;
+opt = timeoptions;
+opt.Title.FontWeight = 'Bold';
+subplot(311), lsim(G2,sin(t),t,opt), title('w = 1')
+subplot(312), lsim(G2,sin(0.9*t),t,opt), title('w = 0.9')
+subplot(313), lsim(G2,sin(1.1*t),t,opt), title('w = 1.1')
+
+%% 
+% The waves at 0.9 and 1.1 rad/s are considerably attenuated. The wave at 1 rad/s
+% comes out unchanged once the transients have died off. The long transient
+% results from the poorly damped poles of the filters, which unfortunately
+% are required for a narrow passing band:
+damp(pole(G2))
+
+
+%% Interactive GUI
+% To analyze other standard circuit configurations such as 
+% low-pass and high-pass RLC networks, click on the link below
+% to launch an interactive GUI. In this GUI, you can change the R,L,C 
+% parameters and see the effect on the time and frequency responses
+% in real time.
+%
+% <matlab:rlc_gui Open the RLC Circuit GUI>
+rlc_gui
+
+##### SOURCE END #####
+--></body></html>
