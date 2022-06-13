@@ -192,7 +192,8 @@ h2 {
 p {
 	width:500px;
 	margin-left:40px;
-	float:right;	
+	float:right;
+	text-align: justify
 }
 
 p img {
