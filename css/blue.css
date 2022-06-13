@@ -70,12 +70,12 @@ body {
 }
 
 a, a:visited, a:active {
-	color:#7b90b5;
+	color:#2968d4;
 	text-decoration: none;
 }
 
 a:hover {
-	color:#7b90b5;
+	color:#2968d4;
 	text-decoration: underline;
 }
 
@@ -181,12 +181,12 @@ h2 {
 	height: 10px;
 	text-align: right;
 	float:left;
-	padding:0;
-	margin:0;
+	padding: 15px;
+	margin: 10px;
 	clear:both;
 	font-size:18px;
 	color:#1b4491;
-	margin-bottom:-12px;
+	line-height :22px;
 }
 
 p {
@@ -203,8 +203,8 @@ p img {
 
 div.content {
 	clear: both;
-	padding:0;
-	margin:0;
+	padding: 2px;
+	margin: 2px;
 	overflow: hidden;
 	display:block;
 	padding-top:32px;

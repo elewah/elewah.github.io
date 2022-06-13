@@ -69,11 +69,11 @@ h2 {
 	height: 23px;
 	text-align: right;
 	float:left;
-	padding:0;
-	margin:0;
+	padding: 20px;
+	margin: 20px;
 	clear:both;
 	font-size:22pt;
-	margin-bottom:-12px;
+	margin-bottom:-5px;
 	color:#1b4491;
 }
 
