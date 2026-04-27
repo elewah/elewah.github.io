@@ -8,7 +8,7 @@
     <title>Abdelrahman Elewah - Portfolio</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
@@ -26,6 +26,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#education">Education</a></li>
+            <li><a href="#publications">Publications</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -33,10 +34,11 @@
     </header>
 
     <div id="lead">
+        <div id="lead-grid"></div>
         <div id="lead-content">
             <h1>Abdelrahman Elewah</h1>
-            <h2>AI & Machine Learning Researcher</h2>
-            <a href="https://github.com/elewah/Elewah-Resume/blob/main/elewah_resume.pdf" class="btn-rounded-white" target="_blank"> Resume</a>
+            <h2 id="typed-text"></h2>
+            <a href="https://github.com/elewah/Elewah-Resume/blob/main/elewah_resume.pdf" class="btn-rounded-white" target="_blank">Resume</a>
         </div>
         <div id="lead-overlay"></div>
         <div id="lead-down">
@@ -52,7 +54,7 @@
                 </div>
                 <div class="col-md-8">
                     <p>
-                        AI & Machine Learning Researcher with 7+ years of experience architecting scalable, real-time AI and IoT systems. Specialized in Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), and intelligent frameworks for real-time IoT data processing and search. Passionate about advancing inclusive, impactful research in AI and Generative Systems.
+                        AI Integration Lead and Machine Learning Engineer specializing in designing and deploying scalable AI systems across enterprise and research environments. Currently leading AI and automation integration at MPAC, modernizing property assessment workflows through LLMs, RAG pipelines, and large vision models. Expertise in blueprint understanding, document intelligence, semantic search, and real-time IoT data frameworks. Proven ability to translate research-grade AI into production-ready systems, aligning technical innovation with organizational goals.
                     </p>
                 </div>
             </div>
@@ -62,43 +64,43 @@
     <div id="experience" class="background-alt">
         <h2 class="heading">Experience</h2>
         <div id="experience-timeline">
-            <div data-date="Jan 2020 – Apr 2025">
-                <h3>Ontario Tech University</h3>
-                <h4>Graduate Research Assistant</h4>
+            <div data-date="Jul 2025 – Present">
+                <h3>MPAC</h3>
+                <h4>Artificial Intelligence Integration Lead</h4>
                 <ul>
-                    <li>Designed <strong>SensorsConnect</strong> framework: <strong>World-Wide Web for Internet of Things</strong>, enabling seamless <strong>device communication</strong>.</li>
-                    <li>Introduced <strong>Agentic Search Engine for real-time IoT data (ASE-IoT)</strong>, leveraging <strong>large language models (LLM)</strong>, <strong>retrieval-augmented generation (RAG)</strong>, and <strong>Agentic AI systems</strong>.</li>
-                    <li>Designed the <strong>ThingsDriver</strong> messaging protocol for <strong>IoT cloud-node management</strong>.</li>
-                    <li>Contributed to a project funded by <strong>OVIN</strong>, focusing on developing <strong>curriculums for autonomous vehicles</strong> and researching <strong>software-defined vehicles (SDV)</strong> and <strong>digital twins</strong>.</li>
-                    <li>Collaborated with <strong>Eagle Aerospace</strong> on an <strong>Aircraft Deceleration Early Warning System</strong>.</li>
-                    <li>Introduced a <strong>data visualization method</strong>, <strong>RadViz-Plotly</strong>, to visualize <strong>high-dimensional data</strong> and published it as a <strong>research paper</strong>.</li>
+                    <li>Lead enterprise-wide integration of <strong>AI and automation solutions</strong> across property assessment workflows, modernizing MPAC's digital infrastructure and operational efficiency.</li>
+                    <li>Architect and implement scalable <strong>data pipelines</strong> using Python, LangGraph, FastAPI, Docling, MinerU, PostgreSQL, and MCP servers to support intelligent <strong>building plan parsing and document understanding</strong>.</li>
+                    <li>Design and deploy advanced <strong>RAG (Retrieval-Augmented Generation)</strong> systems for building plan understanding and semantic search aligned with MPAC assessment standards.</li>
+                    <li>Integrate and optimize <strong>large vision-language models</strong> (Qwen3-VL, LayoutLMv3, PaddleOCR-VL, PP-StructureV3) and detection models such as <strong>RF-DETR</strong> for architectural object detection, spatial reasoning, and document layout understanding.</li>
+                    <li>Lead technical documentation, stakeholder presentations, and cross-team <strong>knowledge transfer</strong> to ensure sustainable AI adoption.</li>
                 </ul>
             </div>
             <div data-date="Jan 2023 – Apr 2025">
-                <h3>2U</h3>
-                <h4>Instructional Specialist</h4>
-                <p>
-                    Contributed to the success of the <strong>University of Toronto</strong>'s online <strong>Data Analytics Boot Camp</strong> specializing in training data professionals.
-                </p>
+                <h3>2U / University of Toronto</h3>
+                <h4>Instructional Specialist (part-time)</h4>
                 <ul>
-                    <li>Assisted learners in acquiring essential <strong>practical and technical skills</strong> for modern data analysis:</li>
-                    <ul>
-                        <li><strong>Excel:</strong> Pivot tables, Forecasting, VBA scripting, Statistical modeling.</li>
-                        <li><strong>Python Data Analytics:</strong> APIs, NumPy, SciPy, Pandas, Matplotlib, TensorFlow, Keras, PyTorch.</li>
-                        <li><strong>Databases:</strong> SQL, PostgreSQL/pgAdmin, MongoDB, <strong>Extract, Transform, Load (ETL)</strong> process.</li>
-                        <li><strong>Web Visualizations:</strong> HTML, CSS, Bootstrap framework, JavaScript charting, Geomapping with Leaflet.js.</li>
-                        <li><strong>Advanced Data Analysis Topics:</strong> Tableau, Data ethics, Hadoop, Machine Learning/Deep Learning.</li>
-                    </ul>
-                    <li>Guided learners through <strong>real-world projects</strong> tailored to industry sectors like <strong>Finance</strong>, <strong>Human Resources</strong>, <strong>Healthcare</strong>, and <strong>Government</strong>.</li>
+                    <li>Contributed to the success of the <strong>University of Toronto</strong>'s online <strong>Data Analytics Boot Camp</strong>, supporting <strong>100+ learners</strong> in mastering practical skills for data-driven careers.</li>
+                    <li>Facilitated hands-on workshops in <strong>Python, Databases, Machine Learning, and Data Visualization</strong>, resulting in a <strong>15% increase</strong> in student satisfaction scores.</li>
+                    <li>Supported the deployment of <strong>real-world capstone projects</strong>, helping learners apply techniques in domains such as <strong>healthcare, HR, and finance</strong>.</li>
                 </ul>
             </div>
-            <div data-date="May 2019 – Present">
-                <h3>Tamra-IoT</h3>
-                <h4>Co-Founder</h4>
+            <div data-date="Jan 2020 – Apr 2025">
+                <h3>Ontario Tech University</h3>
+                <h4>Research Assistant</h4>
                 <ul>
-                    <li>Architected <strong>IoT platforms</strong> integrating <strong>MQTT TLS</strong>, <strong>cloud services</strong>, and <strong>mobile control</strong>.</li>
-                    <li>Collaborating on <strong>business management</strong> and strategic decision-making.</li>
-                    <li>Designed <strong>OTA firmware updates</strong> and implemented <strong>robust IoT management solutions</strong>.</li>
+                    <li>Designed the <strong>SensorsConnect</strong> framework, enabling real-time <strong>IoT device interoperability</strong> and scalable data exchange, inspired by the principles of the World Wide Web. <a href="https://ieeexplore.ieee.org/document/10752393" target="_blank">Publication</a></li>
+                    <li>Developed an <strong>Agentic IoT Search Engine (ASE-IoT)</strong> integrating <strong>LLMs</strong>, <strong>RAG</strong>, and autonomous agents for natural language querying of live IoT data. <a href="https://arxiv.org/abs/2503.12255" target="_blank">Publication</a></li>
+                    <li>Co-led an <strong>OVIN-funded project</strong> developing <strong>autonomous vehicle curricula</strong> and applied research on <strong>software-defined vehicles (SDVs)</strong> and digital twins.</li>
+                    <li>Collaborated with <strong>Eagle Aerospace</strong> to prototype an <strong>Aircraft Deceleration Early Warning System</strong>, enhancing runway safety through predictive analytics.</li>
+                </ul>
+            </div>
+            <div data-date="May 2019 – Jan 2023">
+                <h3>Tamra-IoT</h3>
+                <h4>Back-End Developer (part-time)</h4>
+                <ul>
+                    <li>Architected secure and scalable <strong>IoT platforms</strong> integrating <strong>MQTT over TLS</strong>, cloud infrastructure, and mobile control interfaces for real-time device management.</li>
+                    <li>Designed and deployed <strong>Over-The-Air (OTA) firmware update mechanisms</strong>, significantly reducing maintenance costs and improving system resilience. <a href="https://ieeexplore.ieee.org/abstract/document/9824989" target="_blank">Publication</a></li>
+                    <li>Developed a curriculum to teach <strong>IoT concepts</strong> to high school students, promoting early STEM engagement and hands-on learning.</li>
                 </ul>
             </div>
         </div>
@@ -109,147 +111,205 @@
         <div class="education-block">
             <h3>Ontario Tech University</h3>
             <span class="education-date">Jan 2020 – Mar 2025</span>
-            <h4>PhD in Electrical and Computer Engineering</h4>
+            <h4>PhD — Electrical and Computer Engineering</h4>
             <p>
-                GPA: 4.22/4.3. Thesis: SensorsConnect: World Wide Web for Internet of Things.
+                GPA: 4.22/4.3 &nbsp;·&nbsp; <a href="https://learner.mycreds.ca/sharelink/f677e6e2-700e-4b53-a439-30bacbe9bde9/56c2684a-c6e8-480c-9fa4-93d6d649d3fe" target="_blank">Official Transcript</a><br>
+                Thesis: <a href="https://ontariotechu.scholaris.ca/items/ae8fb02b-3cff-4738-aa4b-96834b35dc54/full" target="_blank">SensorsConnect: World Wide Web for Internet of Things</a>
             </p>
         </div>
         <div class="education-block">
             <h3>Benha University</h3>
-            <span class="education-date">Jan 2014 – Dec 2019</span>
-            <h4>MSc in Electrical Engineering</h4>
-            <p>
-                Thesis: Multi-modulation Low Earth Orbit Satellite Based on Software Defined Radio.
-            </p>
+            <span class="education-date">Feb 2013 – Jan 2018</span>
+            <h4>MSc — Electrical Engineering</h4>
         </div>
         <div class="education-block">
             <h3>Benha University</h3>
             <span class="education-date">Sep 2008 – Jun 2012</span>
-            <h4>BSc in Electrical Engineering</h4>
-            <p>
-                Capstone: EagleEyes – Mine Detection System using a Quadcopter (Drone).
-            </p>
+            <h4>BSc — Electrical Engineering</h4>
         </div>
     </div>
 
-    <div id="projects" class="background-alt">
+    <div id="publications" class="background-alt">
+        <h2 class="heading">Selected Publications</h2>
+        <div class="container">
+            <div class="publication-block">
+                <div class="pub-venue">MDPI Sensors &nbsp;·&nbsp; <span class="pub-year">2025</span></div>
+                <h3>Agentic Search Engine for Real-Time IoT Data</h3>
+                <p class="pub-authors">Abdelrahman Elewah, Khalid Elgazzar</p>
+                <a href="https://www.mdpi.com/1424-8220/25/19/5995" target="_blank">View Publication <i class="fa fa-external-link" aria-hidden="true"></i></a>
+            </div>
+            <div class="publication-block">
+                <div class="pub-venue">IEEE Access &nbsp;·&nbsp; <span class="pub-year">Nov 2024</span></div>
+                <h3>SensorsConnect Framework: World-Wide Web for Internet of Things</h3>
+                <p class="pub-authors">Abdelrahman Elewah, Khalid Elgazzar</p>
+                <a href="https://ieeexplore.ieee.org/document/10752393" target="_blank">View Publication <i class="fa fa-external-link" aria-hidden="true"></i></a>
+            </div>
+            <div class="publication-block">
+                <div class="pub-venue">IEEE CEC &nbsp;·&nbsp; <span class="pub-year">Jun 2021</span></div>
+                <h3>3D-RadViz: Three Dimensional Radial Visualization for Large-Scale Data Visualization</h3>
+                <p class="pub-authors">Abdelrahman Elewah, Abeer A Badawi, Haytham Khalil, Shahryar Rahnamayan, Khalid Elgazzar</p>
+                <a href="https://ieeexplore.ieee.org/document/9504983" target="_blank">View Publication <i class="fa fa-external-link" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="projects">
         <h2 class="heading">Projects</h2>
         <div class="container">
             <div class="row">
-                <div class="project shadow-large">
-                    <div class="project-image">
-                        <img src="images/project.jpg" />
-                    </div>
-                    <!-- End .project-image -->
+                <div class="project no-image shadow-large">
                     <div class="project-info">
-                        <h3>Apply Lightweight Fine Tuning to a Foundation Model</h3>
+                        <h3>Localelive — Agentic Search Engine for Real-Time IoT Data</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/SensorsConnect/IoT-Agentic-Search-Engine" target="_blank"><i class="fa fa-github"></i> GitHub</a>
+                            <a href="https://localelive.space/" target="_blank"><i class="fa fa-globe"></i> Live Demo</a>
+                            <a href="https://www.mdpi.com/1424-8220/25/19/5995" target="_blank"><i class="fa fa-file-text-o"></i> Publication</a>
+                        </div>
                         <p>
-                            Leveraged the <strong>GPT-2 language model</strong> and the <strong>Hugging Face Transformers</strong> to fine-tune GPT-2 on <strong>news classification tasks</strong> using the <strong>AG News dataset</strong>. Implemented a <strong>parameter-efficient fine-tuning (PEFT)</strong> approach. Achieved improvements in the <strong>evaluation metrics</strong>, including <strong>reduced loss</strong> and <strong>increased classification accuracy</strong>.
+                            Real-time IoT search engine powered by <strong>LLMs and RAG</strong> enabling natural language queries across heterogeneous sensor systems. Implemented a semantic search pipeline using <strong>Sentence-BERT and HNSW indexing</strong>, reducing query latency by <strong>73%</strong>. Manages over <strong>37,000 real-time IoT documents</strong> across 500+ service types in MongoDB with geo-indexing. Achieved <strong>92% top-1 accuracy</strong> in complex intent detection, surpassing Gemini in benchmarks. Deployed on <strong>AWS</strong> using Docker Compose and Traefik with automated HTTPS and scalable reverse proxy management.
                         </p>
-                        <a href="https://github.com/elewah/Apply-Lightweight-Fine-Tuning-to-a-Foundation-Model/" target="_blank">View Project</a>
+                        <div class="project-tags">
+                            <span>LangGraph</span><span>FastAPI</span><span>RAG</span><span>Sentence-BERT</span><span>MongoDB</span><span>AWS</span><span>Docker</span>
+                        </div>
                     </div>
-                    <!-- End .project-info -->
                 </div>
-                <!-- End .project -->
 
-                <div class="project shadow-large">
-                    <div class="project-image">
-                        <img src="images/project.jpg" />
-                    </div>
-                    <!-- End .project-image -->
+                <div class="project no-image shadow-large">
                     <div class="project-info">
-                        <h3>IoT Agentic Search Engine</h3>
+                        <h3>Story-to-Movie Recommender Chatbot (RAG-based)</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/elewah/Chatbot-Story-To-Movie" target="_blank"><i class="fa fa-github"></i> GitHub</a>
+                            <a href="https://chatbot-story-to-movie.streamlit.app/" target="_blank"><i class="fa fa-globe"></i> Live Demo</a>
+                        </div>
                         <p>
-                            Developed a real-time IoT search engine powered by <strong>LLMs and RAG</strong>, supporting natural language queries across heterogeneous IoT systems. Implemented a semantic search pipeline using <strong>Sentence-BERT</strong> and <strong>HNSW indexing</strong>. Managed over 37,000 real-time IoT documents across 500 service types stored in <strong>MongoDB</strong> with geographic indexing. Achieved 92% top-1 accuracy in complex intent detection and retrieval, outperforming state-of-the-art systems like Gemini. Applied in real-time urban scenarios: finding least-crowded clinics, available parking, and lowest gas prices based on live sensor data.
+                            Retrieval-augmented generation (RAG) system combining vector search with LLMs to deliver context-aware movie recommendations, reducing hallucination rates by <strong>~30%</strong>. Built a semantic search pipeline enabling retrievals from <strong>1,000+ documents</strong>. Applied prompt chaining techniques to improve answer relevance, validated through precision metrics and user feedback. Built with <strong>OpenAI API</strong>, Pandas, and Tenacity for resilient real-time API usage.
                         </p>
-                        <a href="https://github.com/SensorsConnect/IoT-Agentic-Search-Engine" target="_blank">View Project</a>
+                        <div class="project-tags">
+                            <span>RAG</span><span>OpenAI API</span><span>Vector Search</span><span>Streamlit</span><span>Prompt Chaining</span>
+                        </div>
                     </div>
-                    <!-- End .project-info -->
                 </div>
-                <!-- End .project -->
 
-                <div class="project shadow-large">
-                    <div class="project-image">
-                        <img src="images/project.jpg" />
-                    </div>
-                    <!-- End .project-image -->
+                <div class="project no-image shadow-large">
                     <div class="project-info">
-                        <h3>RadViz-Plotly</h3>
+                        <h3>Lightweight Fine-Tuning of a Foundation Model (LoRA / GPT-2)</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/elewah/Apply-Lightweight-Fine-Tuning-to-a-Foundation-Model" target="_blank"><i class="fa fa-github"></i> GitHub</a>
+                        </div>
                         <p>
-                            Developed <strong>RadViz-Plotly</strong>, an <strong>open-source Python package</strong> for creating <strong>2D and 3D Radial Visualization (RadViz)</strong> plots for <strong>high-dimensional datasets</strong>. Enabled <strong>data scientists</strong> to visualize <strong>complex data distributions</strong> interactively using <strong>Plotly</strong> for enhanced <strong>insight discovery</strong>. Facilitated better understanding of <strong>high-dimensional data</strong> and detection of <strong>hidden patterns</strong> through <strong>intuitive visual analytics</strong>.
+                            End-to-end NLP pipeline using <strong>PyTorch</strong> and <strong>Hugging Face Transformers</strong> with <strong>LoRA adapters (PEFT)</strong> to fine-tune GPT-2 on the AG News dataset while keeping the base model frozen. Reduced training time and memory usage by <strong>over 60%</strong> vs. full fine-tuning. Boosted classification accuracy from <strong>83.16% → 88.95%</strong>, demonstrating PEFT effectiveness with minimal compute.
                         </p>
-                        <a href="https://github.com/elewah/RadViz-Plotly" target="_blank">View Project</a>
+                        <div class="project-tags">
+                            <span>PyTorch</span><span>LoRA / PEFT</span><span>GPT-2</span><span>Hugging Face</span><span>TensorFlow</span>
+                        </div>
                     </div>
-                    <!-- End .project-info -->
                 </div>
-                <!-- End .project -->
+
+                <div class="project no-image shadow-large">
+                    <div class="project-info">
+                        <h3>RadViz-Plotly — Open-Source Data Visualization Package</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/elewah/RadViz-Plotly" target="_blank"><i class="fa fa-github"></i> GitHub</a>
+                            <a href="https://ieeexplore.ieee.org/document/9504983" target="_blank"><i class="fa fa-file-text-o"></i> Publication</a>
+                        </div>
+                        <p>
+                            Open-source Python package generating interactive <strong>2D and 3D Radial Visualization (RadViz)</strong> plots for high-dimensional datasets using Plotly. Enables data scientists and analysts to discover hidden clusters, outliers, and trends through intuitive visual interfaces, improving model explainability and decision-making in analytics workflows.
+                        </p>
+                        <div class="project-tags">
+                            <span>Python</span><span>Plotly</span><span>Data Visualization</span><span>Open Source</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- End #projects -->
 
-
-    <!-- <div id="publications">
-        <h2 class="heading">Selected Publications</h2>
-        <div class="container">
-            <div class="publication shadow-large">
-                <div class="publication-info">
-                    <h3>Agentic Search Engine for Real-Time IoT Data</h3>
-                    <p>
-                        <strong>Authors:</strong> Abdelrahman Elewah, Khalid Elgazzar<br>
-                        <strong>Date:</strong> Mar 2025<br>
-                        <a href="https://arxiv.org/abs/2503.12255" target="_blank">View Publication</a>
-                    </p>
-                </div>
+    <div id="skills" class="background-alt">
+        <h2 class="heading">Skills</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3 class="skill-category-title">LLM &amp; Agentic AI</h3>
+                <ul>
+                    <li>LangChain</li>
+                    <li>LangGraph</li>
+                    <li>LangSmith</li>
+                    <li>RAG</li>
+                    <li>Agentic AI</li>
+                    <li>Docling</li>
+                    <li>MinerU</li>
+                    <li>MCP</li>
+                </ul>
             </div>
-            <div class="publication shadow-large">
-                <div class="publication-info">
-                    <h3>SensorsConnect Framework: World-Wide Web for Internet of Things</h3>
-                    <p>
-                        <strong>Authors:</strong> Abdelrahman Elewah, Khalid Elgazzar<br>
-                        <strong>Date:</strong> Nov 2024<br>
-                        <a href="https://ieeexplore.ieee.org/abstract/document/10752393" target="_blank">View Publication</a>
-                    </p>
-                </div>
+            <div class="skill-category">
+                <h3 class="skill-category-title">Languages</h3>
+                <ul>
+                    <li>Python</li>
+                    <li>C/C++</li>
+                    <li>JavaScript</li>
+                </ul>
             </div>
-            <div class="publication shadow-large">
-                <div class="publication-info">
-                    <h3>3D-RadViz: Three Dimensional Radial Visualization for Large-Scale Data Visualization</h3>
-                    <p>
-                        <strong>Authors:</strong> Abdelrahman Elewah, Abeer A Badawi, Haytham Khalil, Shahryar Rahnamayan, Khalid Elgazzar<br>
-                        <strong>Date:</strong> Jun 2021<br>
-                        <a href="https://ieeexplore.ieee.org/document/9504983" target="_blank">View Publication</a>
-                    </p>
-                </div>
+            <div class="skill-category">
+                <h3 class="skill-category-title">Web &amp; APIs</h3>
+                <ul>
+                    <li>REST APIs</li>
+                    <li>FastAPI</li>
+                    <li>Flask</li>
+                    <li>React</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3 class="skill-category-title">Cloud &amp; DevOps</h3>
+                <ul>
+                    <li>AWS EC2</li>
+                    <li>App Runner</li>
+                    <li>ECS</li>
+                    <li>Docker</li>
+                    <li>Kubernetes</li>
+                    <li>CI/CD</li>
+                    <li>GitHub Actions</li>
+                    <li>GitLab CI/CD</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3 class="skill-category-title">Databases</h3>
+                <ul>
+                    <li>PostgreSQL</li>
+                    <li>MongoDB</li>
+                    <li>MySQL</li>
+                    <li>Spark</li>
+                    <li>Hadoop</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3 class="skill-category-title">Tools</h3>
+                <ul>
+                    <li>Jenkins</li>
+                    <li>VS Code</li>
+                    <li>Anaconda</li>
+                    <li>Dev Containers</li>
+                </ul>
             </div>
         </div>
-    </div> -->
-
-    <div id="skills">
-        <h2 class="heading">Skills</h2>
-        <ul>
-            <li>Python</li>
-            <li>C/C++</li>
-            <li>JavaScript</li>
-            <li>React</li>
-            <li>Docker</li>
-            <li>Kubernetes</li>
-            <li>MongoDB</li>
-            <li>PostgreSQL</li>
-            <li>LangChain</li>
-            <li>IoT Frameworks</li>
-        </ul>
     </div>
 
     <div id="contact">
         <h2>Get in Touch</h2>
-        <div id="contact-form">
-            <form method="POST" action="https://formspree.io/your-email@example.com">
-                <input type="hidden" name="_subject" value="Contact request from portfolio website" />
-                <input type="email" name="_replyto" placeholder="Your email" required>
-                <textarea name="message" placeholder="Your message" required></textarea>
-                <button type="submit">Send</button>
-            </form>
+        <p id="contact-tagline">Have a project, collaboration, or question? I'd love to hear from you.</p>
+        <div id="contact-links">
+            <a href="mailto:abdelrahman.elewah@gmail.com" class="contact-btn">
+                <i class="fa fa-envelope" aria-hidden="true"></i> Email Me
+            </a>
+            <a href="https://linkedin.com/in/abdelrahman-elewah" target="_blank" class="contact-btn contact-btn-outline">
+                <i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn
+            </a>
+            <a href="https://github.com/elewah" target="_blank" class="contact-btn contact-btn-outline">
+                <i class="fa fa-github" aria-hidden="true"></i> GitHub
+            </a>
+            <a href="https://scholar.google.ca/citations?user=qkBGxZYAAAAJ&hl=en" target="_blank" class="contact-btn contact-btn-outline">
+                <i class="fa fa-graduation-cap" aria-hidden="true"></i> Scholar
+            </a>
         </div>
     </div>
 
@@ -266,6 +326,7 @@
                     <ul>
                         <li><a href="https://github.com/elewah" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
                         <li><a href="https://linkedin.com/in/abdelrahman-elewah" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="https://scholar.google.ca/citations?user=qkBGxZYAAAAJ&hl=en" target="_blank"><i class="fa fa-graduation-cap" aria-hidden="true"></i></a></li>
                     </ul>
                 </div>
             </div>

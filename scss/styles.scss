@@ -1,92 +1,65 @@
 /*!
-    Title: Dev Portfolio Template
-    Version: 1.2.2
-    Last Change: 03/25/2020
-    Author: Ryan Fitzgerald
-    Repo: https://github.com/RyanFitzgerald/devportfolio-template
-    Issues: https://github.com/RyanFitzgerald/devportfolio-template/issues
-
-    Description: This file contains all the styles associated with the page
-    that don't come from third party libraries. This file gets compiled using
-    Gulp and send to the /css folder which is then loaded on the page.
-*/
-/*
-    File Contents:
-
-        1. Variables
-        2. Mixins
-        3. Global Styles
-        4. Lead Styles
-        5. About Styles
-        6. Experience Styles
-        7. Education Styles
-        8. Project Styles
-        9. Skills Styles
-        10. Contact Styles
-        11. Optional Section Styles
-        12. Media Queries
+    Title: Abdelrahman Elewah Portfolio
+    Description: Dark AI/LLM themed portfolio stylesheet.
+    Compiled with Gulp to /css/styles.css
 */
 
 /*
-    ------------------------
-    ----- 1. Variables -----
-    ------------------------
+    1. Variables
+    2. Mixins
+    3. Global Styles
+    4. Lead Styles
+    5. About Styles
+    6. Experience Styles
+    7. Education Styles
+    8. Publications Styles
+    9. Project Styles
+    10. Skills Styles
+    11. Contact Styles
+    12. Media Queries
 */
 
-// Define base and accent colors
-$base-color: #3498db;
-$base-color-hover: darken($base-color, 10%);
+// ─── 1. Variables ─────────────────────────────────────────────────────────────
 
-// Define background colors
-$background: #fff;
-$background-alt: #f2f2f5;
+$bg-primary:    #080d1a;
+$bg-secondary:  #0d1530;
+$bg-card:       #111827;
+$accent:        #00d4ff;
+$accent-hover:  #00aacc;
+$accent-purple: #7c3aed;
+$text-primary:  #e2e8f0;
+$text-muted:    #94a3b8;
+$border-glow:   rgba(0, 212, 255, 0.2);
+$border-subtle: rgba(255, 255, 255, 0.07);
 
-// Define border colors
-$border: #dcd9d9;
+// ─── 2. Mixins ────────────────────────────────────────────────────────────────
 
-// Define text colors
-$heading: #374054;
-$text: #74808a;
-
-/*
-    ---------------------
-    ----- 2. Mixins -----
-    ---------------------
-*/
-
-@mixin transition($duration: 0.5s, $func: ease, $property: all) {
+@mixin transition($duration: 0.3s, $func: ease, $property: all) {
     transition: #{$duration} #{$func} #{$property};
 }
 
 @mixin placeholder {
-    &::-webkit-input-placeholder {
-        @content;
-    }
-
-    &:-moz-placeholder {
-        @content;
-        opacity: 1;
-    }
-
-    &::-moz-placeholder {
-        @content;
-        opacity: 1;
-    }
-
-    &:-ms-input-placeholder {
-        @content;
-    }
+    &::-webkit-input-placeholder { @content; }
+    &:-moz-placeholder            { @content; opacity: 1; }
+    &::-moz-placeholder           { @content; opacity: 1; }
+    &:-ms-input-placeholder       { @content; }
 }
 
-/*
-    ----------------------------
-    ----- 3. Global Styles -----
-    ----------------------------
-*/
+@mixin glow($color: $accent, $size: 15px) {
+    box-shadow: 0 0 $size rgba($color, 0.4);
+}
+
+// ─── 3. Global Styles ─────────────────────────────────────────────────────────
+
+* {
+    box-sizing: border-box;
+}
 
 body {
     font-family: 'Lato', sans-serif;
     font-size: 16px;
+    background: $bg-primary;
+    color: $text-primary;
 
     &.active {
         overflow: hidden;
@@ -94,51 +67,82 @@ body {
     }
 }
 
-// No JS styles
-.no-js {
-    #experience-timeline {
-        > div {
-            background: $background;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid $border;
+a {
+    color: $accent;
+    text-decoration: none;
+    @include transition(0.2s);
 
-            h3 {
-                font-size: 1.5em;
-                font-weight: 300;
-                color: $heading;
-                display: inline-block;
-                margin: 0;
-            }
-
-            h4 {
-                font-size: 1.2em;
-                font-weight: 300;
-                color: #7e8890;
-                margin: 0 0 15px 0;
-            }
-
-            p {
-                color: $text;
-                font-size: 0.9em;
-                margin: 0;
-            }
-        }
-
-        &:before, &:after {
-            content: none;
-        }
+    &:hover {
+        color: $accent-hover;
+        text-decoration: none;
     }
 }
 
-@keyframes dropHeader {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
+// No-JS fallback
+.no-js {
+    #experience-timeline {
+        > div {
+            background: $bg-card;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid $border-subtle;
+
+            h3 { font-size: 1.5em; font-weight: 300; color: $text-primary; display: inline-block; margin: 0; }
+            h4 { font-size: 1.2em; font-weight: 300; color: $text-muted; margin: 0 0 15px 0; }
+            p  { color: $text-muted; font-size: 0.9em; margin: 0; }
+        }
+
+        &:before, &:after { content: none; }
+    }
 }
+
+// ─── Animations ───────────────────────────────────────────────────────────────
+
+@keyframes dropHeader {
+    0%   { transform: translateY(-100%); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes pulsate {
+    0%, 100% { transform: scale(1, 1); }
+    50%       { transform: scale(1.2, 1.2); }
+}
+
+@keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 8px rgba(0, 212, 255, 0.3); }
+    50%       { box-shadow: 0 0 22px rgba(0, 212, 255, 0.7); }
+}
+
+@keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gridScroll {
+    from { background-position: 0 0; }
+    to   { background-position: 40px 40px; }
+}
+
+// ─── Scroll reveal ────────────────────────────────────────────────────────────
+
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    @include transition(0.6s, ease);
+
+    &.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// ─── Header & nav ─────────────────────────────────────────────────────────────
 
 header {
     position: absolute;
@@ -147,58 +151,47 @@ header {
     right: 0;
     text-align: center;
     z-index: 10;
-    animation-name: dropHeader;
-    animation-iteration-count: 1;
-    animation-timing-function: ease;
-    animation-duration: 0.75s;
+    animation: dropHeader 0.75s ease 1;
 
     ul {
         display: inline-block;
-        background: $background;
+        background: rgba($bg-primary, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid $border-subtle;
+        border-top: none;
         text-align: center;
-        padding: 10px;
+        padding: 8px 6px;
         margin: 0;
-        border-bottom-right-radius: 4px;
-        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
     }
 
-    li {
-        display: inline-block;
-    }
+    li { display: inline-block; }
 
     a {
         display: block;
-        color: $base-color;
-        padding: 10px;
+        color: $text-muted;
+        padding: 8px 12px;
+        font-size: 0.9em;
+        letter-spacing: 0.04em;
+        border-radius: 6px;
+        @include transition(0.2s);
 
         &:hover {
-            color: $base-color-hover;
-            text-decoration: none;
-            background: #eee;
-            border-radius: 4px;
-        }
-
-        &:focus {
-            color: $base-color;
+            color: $accent;
+            background: rgba($accent, 0.08);
             text-decoration: none;
         }
+
+        &:focus { color: $accent; text-decoration: none; }
     }
 
-    &.active {
-        display: block;
-    }
-
-    &.sticky {
-        position: fixed;
-        z-index: 999;
-    }
+    &.active  { display: block; }
+    &.sticky  { position: fixed; z-index: 999; }
 }
 
-#menu {
-    &.active {
-        display: block;
-    }
-}
+#menu.active { display: block; }
 
 #mobile-menu-open {
     display: none;
@@ -206,46 +199,42 @@ header {
     position: fixed;
     right: 15px;
     top: 10px;
-    color: $base-color;
+    color: $accent;
     font-size: 1.5em;
     z-index: 20;
     padding: 0 7px;
     border-radius: 4px;
-    background: $background;
+    background: $bg-card;
+    border: 1px solid $border-subtle;
 }
 
 #mobile-menu-close {
     display: none;
     text-align: right;
     width: 100%;
-    background: $background;
+    background: $bg-card;
     font-size: 1.5em;
     padding-right: 15px;
     padding-top: 10px;
     cursor: pointer;
-    color: $base-color;
+    color: $accent;
 
-    span {
-        font-size: 0.5em;
-        text-transform: uppercase;
-    }
-
-    i {
-        vertical-align: middle;
-    }
+    span { font-size: 0.5em; text-transform: uppercase; }
+    i    { vertical-align: middle; }
 }
+
+// ─── Footer ───────────────────────────────────────────────────────────────────
 
 footer {
     padding: 50px 0;
+    background: $bg-primary;
+    border-top: 1px solid $border-subtle;
 }
 
 .copyright {
     padding-top: 20px;
 
-    p {
-        margin: 0;
-        color: $text;
-    }
+    p { margin: 0; color: $text-muted; font-size: 0.9em; }
 }
 
 .top {
@@ -258,102 +247,117 @@ footer {
         width: 35px;
         height: 35px;
         border-radius: 50%;
-        border: 3px solid lighten($text, 25%);
-        text-align:center;
+        border: 2px solid rgba($accent, 0.4);
+        text-align: center;
+        @include transition(0.2s);
+
+        &:hover {
+            border-color: $accent;
+            @include glow();
+        }
     }
 
-    i {
-        color: $text;
-    }
+    i { color: $accent; line-height: 32px; }
 }
 
 .social {
     text-align: right;
 
-    ul {
-        margin: 5px 0 0 0;
-        padding: 0;
-    }
+    ul { margin: 5px 0 0 0; padding: 0; }
 
-    li {
-        display: inline-block;
-        font-size: 1.25em;
-        list-style: none;
-    }
+    li { display: inline-block; font-size: 1.25em; list-style: none; }
 
     a {
         display: block;
-        color: $text;
+        color: $text-muted;
         padding: 10px;
+        @include transition(0.2s);
 
         &:hover {
-            color: $base-color;
+            color: $accent;
+            text-shadow: 0 0 10px rgba($accent, 0.6);
         }
     }
 }
 
+// ─── Shared utility classes ───────────────────────────────────────────────────
+
 .btn-rounded-white {
     display: inline-block;
-    color: #fff;
-    padding: 15px 25px;
-    border: 3px solid #fff;
+    color: $accent;
+    padding: 14px 32px;
+    border: 2px solid $accent;
     border-radius: 30px;
-    @include transition();
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    font-family: 'Space Grotesk', sans-serif;
+    @include transition(0.3s);
 
     &:hover {
-        color: $base-color;
-        background: #fff;
+        background: $accent;
+        color: $bg-primary;
         text-decoration: none;
+        box-shadow: 0 0 24px rgba($accent, 0.5);
     }
 }
 
-.shadow {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-
-.shadow-large {
-    box-shadow: 0 3px 6px rgba(0,0,0,0.08), 0 3px 6px rgba(0,0,0,0.15);
-}
+.shadow        { box-shadow: 0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.5); }
+.shadow-large  { box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
 
 .heading {
+    font-family: 'Space Grotesk', sans-serif;
     position: relative;
     display: inline-block;
     font-size: 2em;
-    font-weight: 300;
+    font-weight: 700;
     margin: 0 0 30px 0;
+    color: $text-primary;
 
     &:after {
         position: absolute;
         content: '';
         top: 100%;
-        height: 1px;
+        height: 3px;
         width: 50px;
         left: 0;
         right: 0;
-        margin: 0 auto;
-        background: $base-color;
+        margin: 6px auto 0;
+        background: $accent;
+        border-radius: 2px;
+        box-shadow: 0 0 8px rgba($accent, 0.6);
     }
 }
 
-.background-alt {
-    background: $background-alt;
-}
+.background-alt { background: $bg-secondary; }
 
-/*
-    --------------------------
-    ----- 4. Lead Styles -----
-    --------------------------
-*/
+// ─── 4. Lead Styles ───────────────────────────────────────────────────────────
 
 #lead {
     position: relative;
     height: 100vh;
     min-height: 500px;
     max-height: 1080px;
-    background: url(../images/lead-bg.jpg);
-    background-size: cover;
+    background: $bg-primary;
     padding: 15px;
     overflow: hidden;
+}
+
+#lead-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba($accent, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba($accent, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: gridScroll 8s linear infinite;
+    z-index: 0;
+}
+
+#lead-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba($bg-secondary, 0.6) 0%, rgba($bg-primary, 0.95) 70%);
+    z-index: 1;
 }
 
 #lead-content {
@@ -364,37 +368,42 @@ footer {
     transform: translate(-50%, -50%);
     text-align: center;
 
-    h1, h2 {
-        margin: 0;
-    }
+    h1, h2 { margin: 0; }
 
     h1 {
-        color: #fff;
-        font-weight: 900;
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 700;
         font-size: 5em;
         text-transform: uppercase;
         letter-spacing: 0.05em;
         line-height: 0.9em;
+        background: linear-gradient(135deg, #ffffff 0%, $accent 50%, $accent-purple 100%);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradientShift 5s ease infinite;
     }
 
     h2 {
-        color: lighten($base-color, 25%);
-        font-weight: 500;
-        font-size: 2.25em;
-        margin-bottom: 15px;
+        color: $accent;
+        font-weight: 400;
+        font-size: 1.8em;
+        margin-bottom: 30px;
+        margin-top: 12px;
+        min-height: 1.4em;
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: 0.03em;
     }
 }
 
-#lead-overlay {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba($base-color-hover, 0.8);
-    z-index: 1;
+// Cursor blink for typed effect
+#typed-text::after {
+    content: '|';
+    color: $accent;
+    animation: pulsate 0.8s ease infinite;
+    margin-left: 2px;
+    font-weight: 300;
 }
 
 #lead-down {
@@ -405,74 +414,55 @@ footer {
     text-align: center;
     z-index: 10;
     bottom: 15px;
-    color: #fff;
 
     span {
         cursor: pointer;
         display: block;
         margin: 0 auto;
-        width: 35px;
-        height: 35px;
+        width: 38px;
+        height: 38px;
         border-radius: 50%;
-        border: 3px solid lighten($base-color, 25%);
-        text-align:center;
+        border: 2px solid rgba($accent, 0.5);
+        text-align: center;
+        @include transition(0.2s);
+
+        &:hover {
+            border-color: $accent;
+            @include glow();
+        }
     }
 
     i {
-        animation: pulsate 1.5s ease;
-        animation-iteration-count: infinite;
-        padding-top: 5px;;
+        color: $accent;
+        animation: pulsate 1.5s ease infinite;
+        padding-top: 8px;
     }
 }
 
-@keyframes pulsate {
-    0% {
-        transform: scale(1, 1);
-    }
-
-    50% {
-        transform: scale(1.2, 1.2);
-    }
-
-    100% {
-        transform: scale(1, 1);
-    }
-}
-
-/*
-    ---------------------------
-    ----- 5. About Styles -----
-    ---------------------------
-*/
+// ─── 5. About Styles ──────────────────────────────────────────────────────────
 
 #about {
     padding: 75px 15px;
-    border-bottom: 1px solid $border;
+    border-bottom: 1px solid $border-subtle;
 
-    h2 {
-        color: $heading;
-    }
+    h2 { color: $text-primary; }
 
     p {
-        color: $text;
+        color: $text-muted;
         margin: 0;
+        line-height: 1.8;
+        font-size: 1.05em;
     }
 }
 
-/*
-    --------------------------------
-    ----- 6. Experience Styles -----
-    --------------------------------
-*/
+// ─── 6. Experience Styles ─────────────────────────────────────────────────────
 
 #experience {
     padding: 50px 15px;
     text-align: center;
-    border-bottom: 1px solid $border;
+    border-bottom: 1px solid $border-subtle;
 
-    h2 {
-        color: $heading;
-    }
+    h2 { color: $text-primary; }
 }
 
 #experience-timeline {
@@ -488,18 +478,17 @@ footer {
         left: 303px;
         right: auto;
         height: 100%;
-        width: 3px;
-        background: $base-color;
+        width: 2px;
+        background: linear-gradient(to bottom, $accent, rgba($accent, 0.1));
         z-index: 0;
     }
 
     &:after {
         position: absolute;
         content: '';
-        width: 3px;
+        width: 2px;
         height: 40px;
-        background: $base-color;
-        background: linear-gradient(to bottom, $base-color, rgba($base-color, 0));
+        background: linear-gradient(to bottom, rgba($accent, 0.3), rgba($accent, 0));
         top: 100%;
         left: 303px;
     }
@@ -507,31 +496,55 @@ footer {
 
 .vtimeline-content {
     margin-left: 350px;
-    background: #fff;
-    border: 1px solid #e6e6e6;
-    padding: 15px;
-    border-radius: 3px;
+    background: $bg-card;
+    border: 1px solid $border-subtle;
+    padding: 20px;
+    border-radius: 8px;
     text-align: left;
+    @include transition(0.3s);
+
+    &:hover {
+        border-color: rgba($accent, 0.3);
+        box-shadow: 0 0 20px $border-glow;
+    }
 
     h3 {
-        font-size: 1.5em;
-        font-weight: 300;
-        color: $heading;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.3em;
+        font-weight: 600;
+        color: $text-primary;
         display: inline-block;
         margin: 0;
     }
 
     h4 {
-        font-size: 1.2em;
-        font-weight: 300;
-        color: #7e8890;
-        margin: 0 0 15px 0;
+        font-size: 1em;
+        font-weight: 400;
+        color: $accent;
+        margin: 4px 0 12px 0;
     }
 
-    p {
-        color: $text;
-        font-size: 0.9em;
+    p { color: $text-muted; font-size: 0.9em; margin: 0; }
+
+    ul {
         margin: 0;
+        padding-left: 18px;
+        color: $text-muted;
+        font-size: 0.9em;
+
+        li {
+            margin-bottom: 6px;
+            line-height: 1.6;
+
+            strong { color: $text-primary; }
+
+            a {
+                color: $accent;
+                font-size: 0.85em;
+
+                &:hover { color: $accent-hover; }
+            }
+        }
     }
 }
 
@@ -544,19 +557,21 @@ footer {
 
 .vtimeline-icon {
     position: relative;
-    color: #fff;
-    width: 50px;
-    height: 50px;
-    background: $base-color;
+    color: $bg-primary;
+    width: 46px;
+    height: 46px;
+    background: $accent;
     border-radius: 50%;
     float: left;
     z-index: 99;
     margin-left: 280px;
+    animation: glowPulse 3s ease infinite;
 
     i {
         display: block;
-        font-size: 2em;
-        margin-top: 10px;
+        font-size: 1.6em;
+        margin-top: 12px;
+        text-align: center;
     }
 }
 
@@ -565,113 +580,187 @@ footer {
     text-align: right;
     position: absolute;
     left: 0;
-    top: 10px;
-    font-weight: 300;
-    color: #374054;
+    top: 12px;
+    font-weight: 400;
+    font-size: 0.9em;
+    color: $accent;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
-/*
-    -------------------------------
-    ----- 7. Education Styles -----
-    -------------------------------
-*/
+// ─── 7. Education Styles ──────────────────────────────────────────────────────
 
 #education {
-    padding: 50px 15px 20px 15px;
-    border-bottom: 1px solid $border;
+    padding: 50px 15px 30px 15px;
+    border-bottom: 1px solid $border-subtle;
     text-align: center;
 
-    h2 {
-        color: $heading;
-        margin-bottom: 50px;
-    }
+    h2 { color: $text-primary; margin-bottom: 50px; }
 }
 
 .education-block {
     max-width: 700px;
-    margin: 0 auto 30px auto;
-    padding: 15px;
-    border: 1px solid $border;
+    margin: 0 auto 24px auto;
+    padding: 20px;
+    background: $bg-card;
+    border: 1px solid $border-subtle;
+    border-radius: 8px;
     text-align: left;
+    @include transition(0.3s);
 
-    h3 {
-        font-weight: 500;
-        float: left;
-        margin: 0;
-        color: $heading;
+    &:hover {
+        border-color: rgba($accent, 0.3);
+        box-shadow: 0 0 20px $border-glow;
     }
 
-    span {
-        color: $text;
+    h3 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 600;
+        float: left;
+        margin: 0;
+        color: $text-primary;
+    }
+
+    span.education-date {
+        color: $accent;
         float: right;
+        font-size: 0.9em;
     }
 
     h4 {
-        color: $text;
+        color: $text-muted;
         clear: both;
-        font-weight: 500;
-        margin: 0 0 15px 0;
+        font-weight: 400;
+        margin: 6px 0 10px 0;
+        font-size: 0.95em;
     }
 
     p, ul {
         margin: 0;
-        color: $text;
-        font-size: 0.9em;
+        color: $text-muted;
+        font-size: 0.88em;
+        line-height: 1.6;
+
+        a { color: $accent; &:hover { color: $accent-hover; } }
     }
 
-    ul {
-        padding: 0 0 0 15px;
+    ul { padding: 0 0 0 15px; }
+}
+
+// ─── 8. Publications Styles ───────────────────────────────────────────────────
+
+#publications {
+    padding: 50px 15px;
+    text-align: center;
+    border-bottom: 1px solid $border-subtle;
+
+    h2 { color: $text-primary; margin-bottom: 40px; }
+}
+
+.publication-block {
+    max-width: 750px;
+    margin: 0 auto 20px auto;
+    padding: 20px 24px;
+    background: $bg-card;
+    border: 1px solid $border-subtle;
+    border-left: 3px solid $accent-purple;
+    border-radius: 8px;
+    text-align: left;
+    @include transition(0.3s);
+
+    &:hover {
+        border-color: rgba($accent-purple, 0.5);
+        border-left-color: $accent-purple;
+        box-shadow: 0 0 20px rgba($accent-purple, 0.15);
+    }
+
+    .pub-venue {
+        font-size: 0.82em;
+        font-family: 'Space Grotesk', sans-serif;
+        color: $accent;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin: 0 0 6px 0;
+
+        .pub-year { color: $text-muted; }
+    }
+
+    h3 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.05em;
+        font-weight: 600;
+        color: $text-primary;
+        margin: 0 0 8px 0;
+        line-height: 1.4;
+    }
+
+    .pub-authors {
+        font-size: 0.85em;
+        color: $text-muted;
+        margin: 0 0 12px 0;
+    }
+
+    a {
+        font-size: 0.85em;
+        font-weight: 600;
+        color: $accent;
+        @include transition(0.2s);
+
+        i { margin-left: 4px; font-size: 0.8em; }
+
+        &:hover { color: $accent-hover; }
     }
 }
 
-/*
-    -------------------------------
-    ----- 8. Project Styles -----
-    -------------------------------
-*/
+// ─── 9. Project Styles ────────────────────────────────────────────────────────
 
 #projects {
     padding: 50px 15px;
-    border-bottom: 1px solid $border;
+    border-bottom: 1px solid $border-subtle;
     text-align: center;
 
-    h2 {
-        color: $heading;
-        margin-bottom: 50px;
-    }
+    h2 { color: $text-primary; margin-bottom: 40px; }
 }
 
 .project {
     position: relative;
     max-width: 900px;
-    margin: 0 auto 30px auto;
+    margin: 0 auto 24px auto;
     overflow: hidden;
-    background: #fff;
-    border-radius: 4px;
+    background: $bg-card;
+    border: 1px solid $border-subtle;
+    border-radius: 10px;
+    @include transition(0.3s);
+
+    &:hover {
+        border-color: rgba($accent, 0.35);
+        box-shadow: 0 0 24px $border-glow;
+    }
 }
 
-.project-image {
-    float: left;
-}
+.project-image { float: left; }
 
 .project-info {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     margin-left: 300px;
-    padding: 15px;
+    padding: 20px;
 
     h3 {
-        font-size: 1.5em;
-        font-weight: 300;
-        color: $heading;
-        margin: 0 0 15px 0;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.2em;
+        font-weight: 600;
+        color: $text-primary;
+        margin: 0 0 10px 0;
     }
 
     p {
-        color: $text;
-        margin: 0 0 15px 0;
-        font-size: 0.9em;
+        color: $text-muted;
+        margin: 0 0 12px 0;
+        font-size: 0.88em;
+        line-height: 1.65;
+
+        strong { color: $text-primary; }
     }
 }
 
@@ -679,64 +768,125 @@ footer {
     .project-info {
         position: relative;
         margin: 0;
-        padding: 30px 15px;
+        padding: 24px;
         transform: none;
     }
 }
 
-#more-projects {
-    display: none;
+.project-links {
+    margin-bottom: 12px;
+
+    a {
+        display: inline-block;
+        margin-right: 14px;
+        font-size: 0.85em;
+        font-weight: 600;
+        color: $accent;
+        @include transition(0.2s);
+
+        i { margin-right: 4px; }
+
+        &:hover { color: $accent-hover; }
+    }
 }
 
-/*
-    -------------------------------
-    ----- 9. Skills Styles -----
-    -------------------------------
-*/
+.project-tags {
+    margin-top: 14px;
+
+    span {
+        display: inline-block;
+        margin: 4px 4px 0 0;
+        padding: 3px 10px;
+        font-size: 0.78em;
+        background: rgba($accent-purple, 0.12);
+        color: lighten($accent-purple, 30%);
+        border: 1px solid rgba($accent-purple, 0.25);
+        border-radius: 20px;
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: 0.03em;
+    }
+}
+
+#more-projects { display: none; }
+
+// ─── 10. Skills Styles ────────────────────────────────────────────────────────
 
 #skills {
     padding: 50px 15px;
     text-align: center;
+    border-bottom: 1px solid $border-subtle;
 
-    h2 {
-        color: $heading;
-        margin-bottom: 50px;
-    }
+    h2 { color: $text-primary; margin-bottom: 40px; }
+}
 
-    ul {
-        display: block;
-        margin: 0 auto;
-        padding: 0;
-        max-width: 800px;
-    }
+.skills-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    text-align: left;
+}
 
-    li {
-        display: inline-block;
-        margin: 7px;
-        padding: 5px 10px;
-        color: $heading;
-        background: darken($background-alt, 5%);
-        list-style: none;
-        cursor: default;
-        font-size: 1.2em;
+.skill-category {
+    min-width: 200px;
+    flex: 1 1 200px;
+    max-width: 280px;
+}
+
+.skill-category-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: $accent-purple;
+    margin: 0 0 12px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba($accent-purple, 0.25);
+}
+
+.skill-category ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.skill-category li {
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 0.85em;
+    color: $text-muted;
+    background: $bg-card;
+    border: 1px solid $border-subtle;
+    border-radius: 4px;
+    cursor: default;
+    @include transition(0.2s);
+
+    &:hover {
+        color: $accent;
+        border-color: rgba($accent, 0.4);
+        background: rgba($accent, 0.06);
     }
 }
 
-/*
-    -------------------------------
-    ----- 10. Contact Styles -----
-    -------------------------------
-*/
+// ─── 11. Contact Styles ───────────────────────────────────────────────────────
 
 #contact {
-    padding: 50px 15px;
-    background: $base-color;
+    padding: 60px 15px;
+    background: $bg-secondary;
     text-align: center;
 
     h2 {
-        margin: 0 0 15px 0;
-        color: #fff;
-        font-weight: 500;
+        margin: 0 0 20px 0;
+        color: $text-primary;
+        font-weight: 600;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 2em;
     }
 }
 
@@ -747,20 +897,21 @@ footer {
     input, textarea {
         display: block;
         width: 100%;
-        padding: 10px;
-        border-radius: 4px;
-        border: none;
-        margin-bottom: 10px;
-        background: darken($base-color, 15%);
-        color: #fff;
-        @include transition();
-        @include placeholder {
-            color: #fff;
-        }
+        padding: 12px 14px;
+        border-radius: 6px;
+        border: 1px solid $border-subtle;
+        margin-bottom: 12px;
+        background: $bg-card;
+        color: $text-primary;
+        font-family: 'Lato', sans-serif;
+        font-size: 0.95em;
+        @include transition(0.2s);
+        @include placeholder { color: $text-muted; }
 
         &:focus {
             outline: none;
-            background: darken($base-color, 25%);
+            border-color: rgba($accent, 0.5);
+            box-shadow: 0 0 12px rgba($accent, 0.15);
         }
     }
 
@@ -772,107 +923,48 @@ footer {
     button {
         display: block;
         width: 100%;
-        background: #fff;
-        border-radius: 4px;
-        padding: 5px 10px;
+        background: $accent;
+        border-radius: 6px;
+        padding: 12px 10px;
         border: none;
-        color: $base-color;
+        color: $bg-primary;
         font-weight: 700;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-        @include transition();
+        font-size: 1em;
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        @include transition(0.2s);
 
         &:hover {
-            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+            background: $accent-hover;
+            box-shadow: 0 0 20px rgba($accent, 0.4);
         }
     }
 }
 
-/*
-    ---------------------------------------
-    ----- 11. Optional Section Styles -----
-    ---------------------------------------
-*/
-
-.optional-section {
-    padding: 50px 15px;
-    text-align: center;
-    border-top: 1px solid $border;
-
-    h2 {
-        color: $heading;
-    }
-}
-
-.optional-section-block {
-    max-width: 700px;
-    margin: 0 auto 30px auto;
-    padding: 15px;
-    border: 1px solid $border;
-    background: #fff;
-    text-align: left;
-
-    h3 {
-        font-weight: 500;
-        margin: 0 0 15px 0;
-        color: $heading;
-    }
-
-    h4 {
-        color: $text;
-        clear: both;
-        font-weight: 500;
-        margin: 0 0 15px 0;
-    }
-
-    p, ul {
-        margin: 0 0 15px 0;
-        color: $text;
-        font-size: 0.9em;
-    }
-
-    ul {
-        padding: 0 0 0 15px;
-    }
-}
-
-/*
-    -----------------------------
-    ----- 12. Media Queries -----
-    -----------------------------
-*/
+// ─── 12. Media Queries ────────────────────────────────────────────────────────
 
 // Collapse timeline
 @media only screen and (max-width: 750px) {
-
     #experience-timeline {
-        &:before, &:after {
-            left: 23px;
-        }
-
+        &:before, &:after { left: 23px; }
     }
 
     .vtimeline-date {
         width: auto;
         text-align: left;
         position: relative;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         display: block;
         margin-left: 70px;
     }
 
-    .vtimeline-icon {
-        margin-left: 0;
-    }
-
-    .vtimeline-content {
-        margin-left: 70px;
-    }
-
+    .vtimeline-icon { margin-left: 0; }
+    .vtimeline-content { margin-left: 70px; }
 }
 
 // Medium Devices
-@media only screen and (max-width : 992px) {
-
+@media only screen and (max-width: 992px) {
     #lead {
         height: auto;
         min-height: auto;
@@ -886,28 +978,20 @@ footer {
         left: auto;
         top: auto;
 
-        h1 {
-            font-size: 3em;
-        }
-
-        h2 {
-            font-size: 1.75em;
-        }
+        h1 { font-size: 3em; }
+        h2 { font-size: 1.4em; }
     }
 
     #about {
         text-align: center;
-
-        p {
-            text-align: left;
-        }
+        p { text-align: left; }
     }
 
+    .skills-container { gap: 20px; }
 }
 
 // Small Devices
-@media only screen and (max-width : 768px) {
-
+@media only screen and (max-width: 768px) {
     header {
         position: fixed;
         display: none;
@@ -917,9 +1001,7 @@ footer {
         height: 100%;
     }
 
-    #mobile-menu-open, #mobile-menu-close {
-        display: block;
-    }
+    #mobile-menu-open, #mobile-menu-close { display: block; }
 
     #menu {
         height: 100%;
@@ -928,74 +1010,50 @@ footer {
         border-radius: 0;
         width: 100%;
 
-        li {
-            display: block;
-            margin-bottom: 10px;
-        }
+        li { display: block; margin-bottom: 10px; }
     }
 
     #lead-content {
-        h1 {
-            font-size: 2em;
-        }
-
-        h2 {
-            font-size: 1.3em;
-        }
-
-        a {
-            padding: 10px 20px;
-        }
+        h1 { font-size: 2em; }
+        h2 { font-size: 1.15em; }
+        a  { padding: 10px 20px; }
     }
 
-    #lead-down {
-        display: none;
-    }
+    #lead-down { display: none; }
 
     .education-block {
-        h3, span {
-            float: none;
-        }
+        h3, span { float: none; }
     }
 
-    .project-image {
-        display: none;
-    }
+    .project-image { display: none; }
 
     .project-info {
         position: relative;
         margin: 0;
-        padding: 30px 15px;
+        padding: 24px 16px;
         top: auto;
         transform: none;
     }
 
-    footer {
-        text-align: center;
+    .skills-container {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 10px;
     }
 
-    .social {
-        text-align: center;
-    }
+    .skill-category { max-width: 100%; flex: none; width: 100%; }
 
+    footer { text-align: center; }
+    .social { text-align: center; }
 }
 
 // Extra Small Devices
-@media only screen and (max-width : 480px) {
-
+@media only screen and (max-width: 480px) {
     #lead-content {
-        h1 {
-            font-size: 1.5em;
-        }
-
-        h2 {
-            font-size: 1em;
-        }
-
-        a {
-            font-size: 0.9em;
-            padding: 5px 10px;
-        }
+        h1 { font-size: 1.5em; }
+        h2 { font-size: 1em; }
+        a  { font-size: 0.9em; padding: 8px 16px; }
     }
 
+    .publication-block { padding: 16px; }
 }

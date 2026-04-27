@@ -1,13 +1,6 @@
 /*!
-    Title: Dev Portfolio Template
-    Version: 1.2.2
-    Last Change: 03/25/2020
-    Author: Ryan Fitzgerald
-    Repo: https://github.com/RyanFitzgerald/devportfolio-template
-    Issues: https://github.com/RyanFitzgerald/devportfolio-template/issues
-
-    Description: This file contains all the scripts associated with the single-page
-    portfolio website.
+    Title: Abdelrahman Elewah Portfolio
+    Description: Portfolio scripts — timeline, nav, typed text, scroll reveal.
 */
 
 (function($) {
@@ -20,8 +13,6 @@
 
     // Animate to section when nav is clicked
     $('header a').click(function(e) {
-
-        // Treat as normal link if no-scroll class
         if ($(this).hasClass('no-scroll')) return;
 
         e.preventDefault();
@@ -32,7 +23,6 @@
             scrollTop: scrollDistance + 'px'
         }, Math.abs(window.pageYOffset - $(heading).offset().top) / 1);
 
-        // Hide the menu once clicked if mobile
         if ($('header').hasClass('active')) {
             $('header, body').removeClass('active');
         }
@@ -40,43 +30,34 @@
 
     // Scroll to top
     $('#to-top').click(function() {
-        $('html, body').animate({
-            scrollTop: 0
-        }, 500);
+        $('html, body').animate({ scrollTop: 0 }, 500);
     });
 
     // Scroll to first element
     $('#lead-down span').click(function() {
         var scrollDistance = $('#lead').next().offset().top;
-        $('html, body').animate({
-            scrollTop: scrollDistance + 'px'
-        }, 500);
+        $('html, body').animate({ scrollTop: scrollDistance + 'px' }, 500);
     });
 
-    // Create timeline
+    // Build experience timeline
     $('#experience-timeline').each(function() {
+        $this = $(this);
+        $userContent = $this.children('div');
 
-        $this = $(this); // Store reference to this
-        $userContent = $this.children('div'); // user content
-
-        // Create each timeline block
         $userContent.each(function() {
             $(this).addClass('vtimeline-content').wrap('<div class="vtimeline-point"><div class="vtimeline-block"></div></div>');
         });
 
-        // Add icons to each block
         $this.find('.vtimeline-point').each(function() {
-            $(this).prepend('<div class="vtimeline-icon"><i class="fa fa-map-marker"></i></div>');
+            $(this).prepend('<div class="vtimeline-icon"><i class="fa fa-code"></i></div>');
         });
 
-        // Add dates to the timeline if exists
         $this.find('.vtimeline-content').each(function() {
             var date = $(this).data('date');
-            if (date) { // Prepend if exists
-                $(this).parent().prepend('<span class="vtimeline-date">'+date+'</span>');
+            if (date) {
+                $(this).parent().prepend('<span class="vtimeline-date">' + date + '</span>');
             }
         });
-
     });
 
     // Open mobile menu
@@ -90,11 +71,84 @@
     });
 
     // Load additional projects
-    $('#view-more-projects').click(function(e){
+    $('#view-more-projects').click(function(e) {
         e.preventDefault();
         $(this).fadeOut(300, function() {
             $('#more-projects').fadeIn(300);
         });
     });
+
+    // ── Typed text effect for hero subtitle ──────────────────────────────────
+
+    var roles = [
+        'AI Integration Lead',
+        'LLM Engineer',
+        'RAG Architect',
+        'Agentic AI Builder',
+        'ML Researcher'
+    ];
+    var roleIndex = 0;
+    var charIndex  = 0;
+    var isDeleting = false;
+    var typingDelay   = 80;
+    var deletingDelay = 40;
+    var pauseDelay    = 2000;
+    var el = document.getElementById('typed-text');
+
+    function type() {
+        if (!el) return;
+        var currentRole = roles[roleIndex];
+
+        if (isDeleting) {
+            el.textContent = currentRole.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            el.textContent = currentRole.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        var delay = isDeleting ? deletingDelay : typingDelay;
+
+        if (!isDeleting && charIndex === currentRole.length) {
+            delay = pauseDelay;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            delay = 400;
+        }
+
+        setTimeout(type, delay);
+    }
+
+    setTimeout(type, 600);
+
+    // ── Scroll reveal with IntersectionObserver ───────────────────────────────
+
+    var revealEls = document.querySelectorAll('#about, #experience, #education, #publications, #projects, #skills, #contact, .education-block, .project, .publication-block');
+
+    revealEls.forEach(function(el) {
+        el.classList.add('reveal');
+    });
+
+    if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08 });
+
+        document.querySelectorAll('.reveal').forEach(function(el) {
+            observer.observe(el);
+        });
+    } else {
+        // Fallback for old browsers
+        document.querySelectorAll('.reveal').forEach(function(el) {
+            el.classList.add('is-visible');
+        });
+    }
 
 })(jQuery);
